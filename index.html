@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gowshik A | Aspiring Data Analyst Portfolio</title>
+<meta name="description" content="Portfolio of Gowshik A, BCA graduate and aspiring data analyst skilled in Power BI, SQL, Python and Excel.">
+<style>
+/* ---------- Design tokens: change colours here ---------- */
+:root{--bg:#0b0a1f;--card:#13122e;--line:#2a2850;--text:#ecebfa;--muted:#a09fc8;--accent:#8b7cff;--accent2:#e054f0}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 "Manrope",system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:#fff;color:#000;padding:8px;z-index:9}
+section,.nav,footer{max-width:1040px;margin:0 auto;padding:64px 22px}
+h1{font-size:clamp(3rem,9vw,5.5rem);line-height:1;margin:.2em 0;letter-spacing:-.03em}
+h2{font-size:1.8rem;margin:0 0 24px}h3{margin:0 0 8px;font-size:1.1rem}
+.muted{color:var(--muted)}.soft{font-size:.9rem;margin-top:14px}.lead{font-size:1.2rem;max-width:34ch}
+/* Navigation */
+.nav{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:14px 22px;background:rgba(13,16,32,.92);backdrop-filter:blur(8px);max-width:none}
+.nav nav{display:flex;gap:18px}.nav nav a{color:var(--muted);text-decoration:none;font-size:.92rem;padding:4px 0;border-bottom:2px solid transparent}
+.nav nav a:hover,.nav nav a.active{color:var(--text);border-color:var(--accent)}
+.logo{color:var(--text);font-weight:800;text-decoration:none}.menu-btn{display:none}
+/* Hero */
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;min-height:80vh}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 16px}
+.btn{display:inline-block;padding:11px 22px;border:1px solid var(--line);border-radius:8px;color:var(--text);text-decoration:none;font:inherit;font-weight:600;background:none;cursor:pointer;transition:transform .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px);border-color:var(--accent)}
+.btn.primary{background:var(--accent);color:#0d1020;border-color:var(--accent)}
+.btn.small{padding:7px 16px;font-size:.9rem;margin-top:8px}.btn.off{color:var(--muted);cursor:default}.btn.off:hover{transform:none;border-color:var(--line)}
+.links a{margin-right:18px}
+/* Hero chart (the one memorable element) */
+.chart{margin:0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+.chart figcaption{font-weight:700;margin-bottom:16px}.chart figcaption span{display:block;font-weight:400;font-size:.85rem;color:var(--muted)}
+.bar{display:grid;grid-template-columns:58px 1fr 40px;gap:10px;align-items:center;margin:9px 0;font-size:.9rem}
+.bar b{font-weight:500;color:var(--muted)}.bar i{height:12px;border-radius:6px;background:var(--accent);width:calc(var(--v) * 1%);transform-origin:left;animation:grow 1.1s ease-out both}
+.bar em{font-style:normal;text-align:right}
+@keyframes grow{from{transform:scaleX(0)}}
+/* Content */
+.about{display:grid;grid-template-columns:180px 1fr;gap:28px;align-items:start}
+.photo{aspect-ratio:1;border:1px dashed var(--line);border-radius:14px;display:grid;place-items:center;text-align:center;color:var(--muted);font-size:.85rem;padding:10px}
+.cards{display:grid;gap:18px}.two{grid-template-columns:repeat(2,1fr)}.three{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px}
+.card ul:not(.tags){padding-left:18px;margin:10px 0}
+.tags{list-style:none;padding:0;margin:10px 0;display:flex;flex-wrap:wrap;gap:8px}
+.tags li{border:1px solid var(--line);border-radius:20px;padding:3px 12px;font-size:.85rem}
+/* Form */
+form{display:grid;gap:6px;max-width:560px;margin-top:20px}
+input,textarea{background:var(--card);border:1px solid var(--line);color:var(--text);border-radius:8px;padding:10px;font:inherit}
+input.bad,textarea.bad{border-color:#ff7b7b}#status{min-height:1.4em;margin:6px 0;color:#ff9a9a}#status.ok{color:#7be0a4}
+footer{text-align:center;color:var(--muted);padding:30px}
+#top{position:fixed;right:18px;bottom:18px;background:var(--accent);color:#0d1020;border:0;border-radius:8px;padding:10px 14px;font-weight:700;cursor:pointer}
+/* Scroll reveal: only the sections below the hero fade in once */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}.reveal.show{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+/* Tablet and mobile */
+@media (max-width:860px){
+  .hero,.about,.two,.three{grid-template-columns:1fr}.hero{min-height:0}.photo{max-width:180px}
+  .menu-btn{display:block;background:none;border:1px solid var(--line);color:var(--text);padding:6px 14px;border-radius:8px}
+  .nav nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--bg);padding:14px 22px;border-bottom:1px solid var(--line)}
+  .nav nav.open{display:flex}
+}
+
+/* ---------- Interactive additions ---------- */
+:root{--navbg:rgba(13,16,32,.92);--onacc:#0d1020}
+[data-theme=light]{--bg:#f7f6fc;--card:#ffffff;--line:#e3e1f2;--text:#14132a;--muted:#585678;--accent:#4f46e5;--accent2:#a855f7;--navbg:rgba(247,246,252,.86);--onacc:#ffffff}
+[data-theme=light] body{background:linear-gradient(180deg,#faf9ff 0%,#f3f1fb 100%)}
+[data-theme=light] body::before{background:radial-gradient(640px 440px at 10% 6%,rgba(79,70,229,.12),transparent 70%),radial-gradient(560px 440px at 90% 48%,rgba(168,85,247,.10),transparent 70%),radial-gradient(480px 360px at 50% 92%,rgba(56,189,248,.08),transparent 70%)}
+[data-theme=light] .nav{border-bottom:1px solid rgba(79,70,229,.10);box-shadow:0 4px 20px rgba(20,19,42,.04)}
+[data-theme=light] .hero h1{background:linear-gradient(115deg,#14132a 22%,#4f46e5 68%,#a855f7 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+[data-theme=light] .card,[data-theme=light] .contact-card,[data-theme=light] .badge,[data-theme=light] .modal,[data-theme=light] #authDialog,[data-theme=light] #bar,[data-theme=light] #resumePanel{box-shadow:0 8px 28px -6px rgba(20,19,42,.08),0 2px 6px rgba(20,19,42,.04)}
+[data-theme=light] .card:hover,[data-theme=light] .contact-card:hover{box-shadow:0 16px 36px -8px rgba(79,70,229,.16),0 4px 10px rgba(20,19,42,.05)}
+[data-theme=light] .btn.primary{box-shadow:0 8px 24px rgba(79,70,229,.28)}
+[data-theme=light] .btn:not(.primary):hover,[data-theme=light] .icons a:hover{background:rgba(79,70,229,.06)}
+[data-theme=light] .tags li{background:#faf9ff}
+[data-theme=light] .tags li[role=button]:hover,[data-theme=light] .tags li.on{background:rgba(79,70,229,.10);color:var(--accent)}
+[data-theme=light] .card .chart,[data-theme=light] .contact-card>a{background:#f8f7fd}
+[data-theme=light] #status.ok,[data-theme=light] #settingsMsg{color:#0f766e}
+[data-theme=light] #status,[data-theme=light] #authError{color:#dc2626}
+.nav{background:var(--navbg)}
+.btn.primary,#top{color:var(--onacc)}
+.theme{background:none;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:6px 14px;font:inherit;cursor:pointer}
+.theme:hover{border-color:var(--accent)}
+.cur{animation:blink 1s steps(1) infinite;margin-left:2px}@keyframes blink{50%{opacity:0}}
+.stats{display:flex;gap:26px;margin:6px 0 18px;flex-wrap:wrap}.stats b{display:block;font-size:1.6rem}.stats span{font-size:.85rem;color:var(--muted)}
+button.bar{background:none;border:0;color:inherit;font:inherit;width:100%;text-align:left;padding:4px 6px;margin:3px 0;border-radius:8px;cursor:pointer}
+button.bar:hover,button.bar.on{background:rgba(124,140,255,.14)}button.bar.on i{filter:brightness(1.3)}
+.readout{margin:14px 0 0;min-height:3em;font-size:.92rem;color:var(--muted)}
+.tags li[role=button]{cursor:pointer;transition:background .2s,border-color .2s}
+.tags li[role=button]:hover,.tags li.on{border-color:var(--accent);background:rgba(124,140,255,.16)}
+details{margin:10px 0}summary{cursor:pointer;font-weight:600;color:var(--accent)}
+.card{transition:transform .25s,border-color .25s}.card:hover{transform:translateY(-3px);border-color:var(--accent)}
+
+/* ---------- Portfolio style upgrade ---------- */
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(600px 420px at 12% 8%,rgba(139,124,255,.20),transparent),radial-gradient(520px 420px at 88% 55%,rgba(224,84,240,.14),transparent);animation:drift 14s ease-in-out infinite alternate}
+#sky{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+@keyframes drift{to{transform:translate(30px,-20px) scale(1.08)}}
+.hero h1{background:linear-gradient(90deg,var(--text) 30%,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+body.editing .hero h1{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:var(--text)}
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent2));border-color:transparent;box-shadow:0 6px 22px rgba(139,124,255,.35)}
+.bar i{background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);border-radius:20px;padding:4px 14px;font-size:.85rem;margin:0 0 14px}
+.dot{width:8px;height:8px;border-radius:50%;background:#4ade80;animation:pulse 1.8s infinite}@keyframes pulse{50%{opacity:.35}}
+.icons{display:flex;gap:12px;margin:0}.icons a{width:44px;height:44px;border:1px solid var(--line);border-radius:12px;display:grid;place-items:center;color:var(--text);transition:transform .2s,border-color .2s,color .2s}
+.icons a:hover{transform:translateY(-3px);border-color:var(--accent);color:var(--accent)}
+.icons svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.num{font:600 .78rem ui-monospace,Menlo,Consolas,monospace;letter-spacing:.14em;color:var(--accent);margin:0 0 6px}
+.facts{margin-top:18px}.facts p{margin:6px 0;font-size:.92rem}.facts .num{margin-bottom:10px}.facts b{display:inline-block;min-width:76px;color:var(--muted);font-weight:600}
+
+/* ---------- Editing mode ---------- */
+.hero{grid-template-columns:1fr;min-height:70vh}.chart{margin-top:26px;max-width:720px}
+body.editing [data-ed]{outline:1.5px dashed var(--accent);outline-offset:6px;border-radius:6px;position:relative;cursor:text}
+body.editing [data-ed]::before{content:"\270E";position:absolute;top:-16px;right:-6px;background:var(--accent);color:var(--onacc);width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:.8rem;z-index:2;pointer-events:none}
+body.editing [data-ed] .card{position:relative}.addbtn{display:none;margin-top:14px}body.editing .addbtn{display:inline-block}
+#bar{position:fixed;top:70px;right:16px;left:auto;bottom:auto;transform:none;z-index:9;display:flex;flex-direction:column;gap:10px;align-items:stretch;width:min(340px,calc(100vw - 32px));max-height:calc(100dvh - 86px);overflow:auto;background:var(--card);border:1px solid var(--accent);border-radius:12px;padding:14px;font-size:.85rem;box-shadow:0 18px 50px rgba(0,0,0,.35)}
+#bar[hidden]{display:none}
+#bar .btn{width:100%;margin:0}
+#authDialog{width:min(420px,calc(100vw - 32px));border:1px solid var(--accent);border-radius:16px;padding:24px;background:var(--card);color:var(--text);box-shadow:0 24px 70px rgba(0,0,0,.45)}
+#authDialog::backdrop{background:rgba(5,5,18,.72);backdrop-filter:blur(5px)}
+#authDialog form{margin:0;gap:12px}
+#authDialog h2{margin:0;font-size:1.35rem}
+#authDialog .auth-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:6px}
+#authError{min-height:1.3em;margin:0;color:#ff9a9a}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:24px 0}
+.contact-card{display:flex;flex-direction:column;align-items:flex-start;gap:10px;min-width:0;padding:18px;background:var(--card);border:1px solid var(--line);border-radius:12px;transition:border-color .2s,transform .2s}
+.contact-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.contact-card>span{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.contact-card>a{max-width:100%;overflow-wrap:anywhere;text-decoration:none;color:var(--text);font-weight:600}
+.contact-card>a:hover{color:var(--accent)}
+.contact-card .btn{margin-top:auto}
+
+/* ---------- Photo, remove buttons, progress bar, footer ---------- */
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:20}
+.photo{overflow:hidden}.photo img{width:100%;height:100%;object-fit:cover;display:block}
+body.editing .photo{cursor:pointer;border:2px dashed var(--accent)}
+.x,.addtag{font:inherit;cursor:pointer;color:var(--muted);background:none;border:0}
+.tags li .x{margin-left:6px;padding:0 2px}.x:hover{color:#ff7b7b}
+.card>.x{position:absolute;top:8px;right:12px;font-size:1.2rem;border:1px solid var(--line);border-radius:8px;width:30px;height:30px}
+.addtag{margin-top:6px;padding:6px 14px;border:1px dashed var(--accent);border-radius:20px;color:var(--accent)}
+footer p{margin:6px 0}footer a{color:var(--muted)}footer a:hover{color:var(--accent)}
+
+/* ---------- Resume viewer and owner resume panel ---------- */
+#resumeViewer{width:min(980px,calc(100vw - 24px));height:calc(100dvh - 24px);max-width:none;max-height:none;margin:auto;padding:0;border:1px solid var(--line);border-radius:16px;background:var(--card);color:var(--text);box-shadow:0 30px 90px rgba(0,0,0,.55);overflow:hidden}
+#resumeViewer[open]{display:flex;flex-direction:column}
+#resumeViewer::backdrop{background:rgba(5,5,18,.8);backdrop-filter:blur(8px)}
+#resumeViewer[open]{animation:pop .28s ease-out}@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.98)}}
+.rv-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,rgba(139,124,255,.12),rgba(224,84,240,.08))}
+.rv-head h2{margin:0;font-size:1.05rem}.rv-head p{margin:0;font-size:.8rem;color:var(--muted)}
+.rv-close{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text);font-size:1.3rem;line-height:1;cursor:pointer}
+.rv-close:hover{border-color:var(--accent);color:var(--accent)}
+.rv-body{flex:1;min-height:0;background:#2b2a3a;display:flex}
+.rv-body iframe{flex:1;width:100%;height:100%;border:0;background:#fff}
+.rv-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:24px;background:var(--bg);color:var(--muted)}
+.rv-empty b{color:var(--text);font-size:1.15rem}
+#resumePanel .rp-row{display:flex;gap:6px}#resumePanel .rp-row .btn{flex:1;padding:7px 10px;font-size:.8rem}#resumePanel .btn:disabled{opacity:.45;cursor:not-allowed}#resumePanel p{margin:0;font-size:.78rem;color:var(--muted);overflow-wrap:anywhere}
+#resumePanel{position:fixed;top:70px;right:16px;z-index:30;width:min(250px,calc(100vw - 32px));display:flex;flex-direction:column;gap:8px;background:var(--card);border:1px solid var(--accent);border-radius:12px;padding:14px;font-size:.85rem;box-shadow:0 18px 50px rgba(0,0,0,.35)}
+#resumePanel[hidden]{display:none}
+#resumePanel .rp-head{display:flex;justify-content:space-between;align-items:center;font-weight:700}
+#resumePanel .rp-head button{background:none;border:0;color:var(--muted);font-size:1.2rem;cursor:pointer;padding:0 4px}
+#resumePanel .btn{width:100%;margin:0;text-align:center}
+#resumeState{margin:0;color:var(--muted);overflow-wrap:anywhere}
+
+/* ---------- Nav actions, compact edit menu, settings, photo cropper ---------- */
+.nav-actions{display:flex;align-items:center;gap:8px}
+.edit-wrap{position:relative}
+#bar{position:absolute;top:calc(100% + 8px);right:0;width:210px;max-height:none;padding:10px;gap:6px;z-index:30}
+#bar .bar-note{margin:0 0 2px;font-size:.75rem;color:var(--muted);line-height:1.4}
+#bar .btn{padding:7px 10px;font-size:.82rem;text-align:left}
+#bar hr{width:100%;border:0;border-top:1px solid var(--line);margin:2px 0}
+.photo.has-img{padding:0;border:1px solid var(--line)}
+body.editing .photo.has-img{border:2px dashed var(--accent)}
+.modal{width:min(420px,calc(100vw - 32px));border:1px solid var(--accent);border-radius:16px;padding:22px;background:var(--card);color:var(--text);box-shadow:0 24px 70px rgba(0,0,0,.45)}
+.modal::backdrop{background:rgba(5,5,18,.72);backdrop-filter:blur(5px)}
+.modal h2{margin:0 0 4px;font-size:1.25rem}
+.modal .row{display:flex;gap:8px;flex-wrap:wrap}
+.modal .row .btn{flex:1;padding:8px 10px;font-size:.85rem}
+.modal .actions{display:flex;justify-content:flex-end;gap:10px;margin-top:14px}
+.crop-stage{display:flex;justify-content:center;margin:14px 0}
+#cropCanvas{width:260px;height:260px;border-radius:14px;border:1px solid var(--line);background:var(--bg);cursor:grab;touch-action:none}
+#cropCanvas:active{cursor:grabbing}
+.crop-zoom{display:flex;align-items:center;gap:10px;margin:0 0 12px;font-size:.85rem;color:var(--muted)}
+.crop-zoom input{flex:1;padding:0;accent-color:var(--accent)}
+.set-group{border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:12px}
+.set-group h3{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.set-group label{display:block;font-size:.85rem;margin:8px 0 4px}
+.set-group textarea,.set-group select,.set-group input{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--text);border-radius:8px;padding:8px;font:inherit}
+.set-info{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin:0;font-size:.85rem}
+.set-info dt{color:var(--muted)}.set-info dd{margin:0;text-align:right}
+.lock{font-size:.7rem;color:var(--muted);border:1px solid var(--line);border-radius:10px;padding:1px 8px;margin-left:6px;font-weight:400;letter-spacing:0;text-transform:none}
+#settingsMsg{min-height:1.2em;margin:8px 0 0;font-size:.82rem;color:#7be0a4}
+/* Weather chart inside its project card */
+.chart-details{margin:12px 0}
+.chart-details>summary{font-size:1rem;font-weight:600;color:var(--accent);cursor:pointer}
+.card .chart-details .chart{margin:10px 0 4px}
+.card .chart{margin:14px 0;padding:14px;max-width:none;background:var(--bg)}
+.card .chart figcaption{font-size:.95rem;margin-bottom:8px}
+.card .bar{grid-template-columns:52px 1fr 38px;font-size:.85rem;margin:2px 0}
+.card .readout{min-height:2.4em;font-size:.82rem;margin-top:8px}
+/* Contact values sit in their own box */
+.contact-card>a{display:block;width:100%;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);font-size:.9rem}
+.contact-card>a:hover{border-color:var(--accent)}
+.contact-card .btn{width:100%;text-align:center}
+/* Premium icon buttons & editable hero stats */
+.nav-actions .icon-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0}
+.nav-actions .icon-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:block}
+body.editing .stats>div{position:relative;padding:6px 26px 6px 8px;border:1px dashed var(--line);border-radius:8px}
+body.editing .stats>div>.x{position:absolute;top:2px;right:4px;font-size:1rem;line-height:1;padding:2px 4px}
+.hero-text>.addbtn{margin:0 0 18px}
+@media (max-width:860px){.nav-actions{gap:6px}.nav-actions .theme:not(.icon-btn){padding:6px 10px;font-size:.85rem}.nav-actions .icon-btn{width:34px;height:34px}}
+/* Social links and GitHub buttons that are set from a link dialog */
+.icons{flex-wrap:wrap}.icons a{position:relative}
+body.editing .icons a{cursor:pointer}
+.icons a>.x{position:absolute;top:-8px;right:-8px;width:20px;height:20px;padding:0;border-radius:50%;background:var(--card);border:1px solid var(--line);font-size:.8rem;line-height:1;display:grid;place-items:center}
+.hero-text>#addSocial{margin:14px 0 0}
+.gh-empty{display:none}body.editing .gh-empty{display:inline-block}
+body.editing .gh-link{cursor:pointer;outline:1.5px dashed var(--accent);outline-offset:3px}
+.icon-pick{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:14px 0 6px}
+.icon-pick[hidden]{display:none}
+.icon-pick button{display:flex;flex-direction:column;align-items:center;gap:5px;padding:10px 2px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text);font:inherit;font-size:.68rem;line-height:1.2;cursor:pointer;transition:border-color .2s,color .2s}
+.icon-pick button:hover{border-color:var(--accent)}
+.icon-pick button[aria-pressed=true]{border-color:var(--accent);color:var(--accent);background:rgba(139,124,255,.12)}
+.icon-pick svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#linkDialog label{display:block;font-size:.85rem;margin:10px 0 4px}
+#linkDialog input{width:100%}
+#linkErr{min-height:1.2em;margin:6px 0 0;font-size:.82rem;color:#ff9a9a}
+[data-theme=light] #linkErr{color:#dc2626}
+#linkDialog .actions{flex-wrap:wrap}#linkRemove{margin-right:auto}#linkRemove[hidden]{display:none}
+@media (max-width:420px){.icon-pick{grid-template-columns:repeat(3,1fr)}}
+</style>
+<meta name="theme-color" content="#0b0a1f">
+<meta property="og:title" content="Gowshik A | Aspiring Data Analyst">
+<meta property="og:description" content="BCA graduate skilled in Power BI, SQL, Python and Excel. See my dashboards and projects.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%238b7cff'/><text x='16' y='23' font-size='19' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>G</text></svg>">
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<a class="skip" href="#home">Skip to content</a>
+<div id="prog"></div>
+
+<!-- NAVIGATION -->
+<header class="nav">
+  <a class="logo" href="#home" aria-label="Gowshik A home">Gowshik A</a>
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">Menu</button>
+  <nav id="navLinks" aria-label="Main">
+    <a href="#about">About</a><a href="#education">Education</a><a href="#skills">Skills</a>
+    <a href="#training">Experience</a><a href="#projects">Projects</a><a href="#achievements">Achievements</a><a href="#contact">Contact</a>
+  </nav>
+  <div class="nav-actions">
+    <button class="theme icon-btn" id="theme" type="button" aria-label="Switch to light theme" title="Switch to light theme"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+    <button class="theme icon-btn" id="settingsBtn" type="button" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+    <div class="edit-wrap">
+      <button class="theme" id="editBtn" aria-pressed="false" aria-controls="bar">✎ Edit</button>
+      <div id="bar" hidden>
+        <p class="bar-note">Editing on. Click outlined text to change it.</p>
+        <button class="btn small" id="dlPage" type="button">Download updated page</button>
+        <button class="btn small" id="addPhoto" type="button">Add / change photo</button>
+        <button class="btn small" id="rmPhoto" type="button">Remove photo</button>
+        <button class="btn small" id="reset" type="button">Reset edits</button>
+        <hr>
+        <button class="btn small primary" id="done" type="button">Done</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-text">
+    <p class="badge"><span class="dot"></span><span id="badgeText">Open to fresher Data Analyst roles</span></p>
+    <p class="muted"><span id="typed">Aspiring Data Analyst</span><span class="cur" aria-hidden="true">|</span></p>
+    <h1>Gowshik A</h1>
+    <p class="lead">BCA graduate who turns raw data into clear Power BI dashboards, using SQL, Python and Excel.</p>
+    <div class="btns">
+      <a class="btn primary" href="#projects">View My Work</a>
+      <a class="btn" href="#contact">Contact Me</a>
+      <button class="btn" id="viewResume" type="button">View Resume</button>
+    </div>
+    <div class="stats"><div><b data-n="2">2</b><span>dashboards built</span></div><div><b data-n="5">5</b><span>months of training</span></div></div>
+    <button class="btn small addbtn" type="button" data-add=".stats > div">+ Add another stat</button>
+    <p class="icons">
+      <a href="https://github.com/Gowshik-Datahub" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub" data-icon="github"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
+      <a href="https://www.linkedin.com/in/gowshik7" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn" data-icon="linkedin"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+      <a href="mailto:kshik089@gmail.com" aria-label="Email" title="Email" data-icon="email"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></a>
+    </p>
+    <button class="btn small addbtn" id="addSocial" type="button">+ Add link</button>
+  </div>
+  <!-- Mini chart uses real numbers from my Weather vs Flight Delays dashboard -->
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="reveal">
+  <p class="num">— 01 — ABOUT</p>
+  <h2>About me</h2>
+  <div class="about">
+    <div class="photo" id="photo" role="img" aria-label="Profile photo" title="Click Edit, then click here to add your photo">[Add Profile Photo]</div>
+    <input type="file" id="photoIn" accept="image/*" hidden>
+    <div id="aboutText"><p>I am a BCA graduate specialising in Data Analytics, with skills in SQL, Python, Excel and Power BI. I built a Formula One Analytics Dashboard to analyse driver and team performance, and a Weather vs Flight Delays dashboard on 25,000 records. I am looking for an entry-level Data Analyst role where I can apply analytical skills and deliver data-driven insights.</p>
+      <aside class="card facts"><p class="num">QUICK FACTS</p>
+        <p><b>Degree</b> BCA, Government Arts and Science College, Perambalur</p>
+        <p><b>Training</b> Data Analytics, SLA Institution, Chennai</p>
+        <p><b>Focus</b> Power BI, SQL, Python</p>
+        <p><b>Status</b> Open to fresher roles</p></aside></div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="reveal">
+  <p class="num">— 02 — EDUCATION</p>
+  <h2>Education</h2>
+  <div class="cards two">
+    <article class="card"><h3>Bachelor of Computer Applications (BCA)</h3><p>Government Arts and Science College, Perambalur<br>Bharathidasan University</p><p class="muted">2023 – 2026</p><p>Coursework: Python, DBMS, Web Technology, Data Structures</p></article>
+    <article class="card"><h3>Class 12 (Higher Secondary)</h3><p>Meenakshi Ramasamy Matriculation Higher Secondary School, Thathanur, Ariyalur<br>State Board</p><p class="muted">2023</p></article>
+  </div>
+  <button class="btn small addbtn" type="button" data-add="#education .cards .card">+ Add another education entry</button>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="reveal">
+  <p class="num">— 03 — SKILLS</p>
+  <h2>Technical skills</h2>
+  <div class="cards three">
+    <article class="card"><h3>📊 Analytics and BI</h3><ul class="tags"><li>Power BI</li><li>DAX</li><li>Power Query</li><li>Excel</li></ul></article>
+    <article class="card"><h3>💻 Programming and databases</h3><ul class="tags"><li>Python</li><li>Pandas</li><li>NumPy</li><li>SQL</li><li>MySQL</li></ul></article>
+    <article class="card"><h3>🛠️ Tools and platforms</h3><ul class="tags"><li>GitHub</li><li>VS Code</li><li>Jupyter Notebook</li></ul></article>
+  </div>
+  <button class="btn small addbtn" type="button" data-add="#skills .cards .card">+ Add another skill group</button>
+  <p id="skillInfo" class="muted soft" role="status">Select a skill to see where I used it.</p>
+  <p class="muted soft">Soft skills: problem-solving, attention to detail, quick learner, communication, time management.</p>
+</section>
+
+<!-- EXPERIENCE / TRAINING (no internships yet, so training is shown instead) -->
+<section id="training" class="reveal">
+  <p class="num">— 04 — EXPERIENCE</p>
+  <h2>Experience and training</h2>
+  <article class="card timeline">
+    <h3>Data Analytics course</h3>
+    <p class="muted">SLA Institution, Chennai · Jun 2026 – Nov 2026</p>
+    <ul>
+      <li>Learned to clean and analyse data with Python (Pandas, NumPy) and SQL.</li>
+      <li>Built dashboards in Power BI and Excel.</li>
+      <li>Built the F1 Analytics and Weather vs Flight Delays dashboards during this course.</li>
+    </ul>
+  </article>
+  <p class="muted soft">No internship yet. I am actively looking for my first data analyst role.</p>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="reveal">
+  <p class="num">— 05 — PROJECTS</p>
+  <h2>Featured projects</h2>
+  <div class="cards two">
+    <article class="card">
+      <h3>F1 Analytics Dashboard</h3>
+      <p>Interactive Power BI dashboard on F1 drivers, teams and circuits, so they can be compared in one place.</p>
+      <ul class="tags"><li>Power BI</li><li>DAX</li><li>Excel</li><li>Python</li></ul>
+      <details><summary>Key features and results</summary><ul><li>Driver profiles with wins, podiums and standings trend</li><li>Constructor standings and team profiles</li><li>Circuit pages across the 2015 – 2025 seasons</li></ul></details>
+      <a class="btn small gh-link" href="https://github.com/Gowshik-Datahub/FORUMULA-1--POWER-BI---DASHBOARD-" target="_blank" rel="noopener">View on GitHub</a>
+    </article>
+    <article class="card">
+      <h3>Weather vs Flight Delays</h3>
+      <p>3-page Power BI dashboard showing how weather affects flight delays and cancellations.</p>
+      <ul class="tags"><li>Power BI</li><li>DAX</li><li>Excel</li><li>Python</li></ul>
+      <details class="chart-details" contenteditable="false">
+        <summary>Flight delay rate by weather</summary>
+        <figure class="chart" contenteditable="false">
+          <button class="bar" style="--v:43" data-t="Clear: 5,670 of 13,192 flights delayed (43%)"><b>Clear</b><i></i><em>43%</em></button>
+          <button class="bar" style="--v:56" data-t="Cloudy: 3,581 of 6,356 flights delayed (56%)"><b>Cloudy</b><i></i><em>56%</em></button>
+          <button class="bar" style="--v:70" data-t="Storm: 855 of 1,226 flights delayed, and 355 cancelled (70%)"><b>Storm</b><i></i><em>70%</em></button>
+          <button class="bar" style="--v:75" data-t="Rain: 2,069 of 2,760 flights delayed (75%)"><b>Rain</b><i></i><em>75%</em></button>
+          <button class="bar" style="--v:78" data-t="Fog: 650 of 836 flights delayed (78%)"><b>Fog</b><i></i><em>78%</em></button>
+          <button class="bar" style="--v:78" data-t="Snow: 494 of 630 flights delayed (78%)"><b>Snow</b><i></i><em>78%</em></button>
+          <p class="readout" role="status">Select a bar to see the flight counts.</p>
+        </figure>
+      </details>
+      <details><summary>Key features and results</summary><ul><li>Delay rate rises from 43% (clear) to about 78% (snow and fog)</li><li>Storm flights average about 53 minutes of delay</li><li>Simulated dataset of 25,000 flights (2024)</li></ul></details>
+      <button class="btn small off gh-link gh-empty" type="button">+ Add GitHub link</button>
+    </article>
+  </div>
+  <button class="btn small addbtn" type="button" data-add="#projects .cards .card">+ Add another project</button>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements" class="reveal">
+  <p class="num">— 06 — ACHIEVEMENTS</p>
+  <h2>Achievements</h2>
+  <div class="cards"><article class="card"><h3>Third place among 25 teams</h3><p>Startup Empire Competition at SLA Institution, with Team Nexora (Project Serve Ease).</p><p class="muted">19 Sep 2026</p></article></div>
+  <button class="btn small addbtn" type="button" data-add="#achievements .cards .card">+ Add another achievement</button>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="reveal">
+  <p class="num">— 07 — CONTACT</p>
+  <h2>Contact</h2>
+  <div class="contact-grid">
+    <article class="contact-card"><span>Email</span><a href="mailto:kshik089@gmail.com">kshik089@gmail.com</a><button class="btn small" type="button" data-copy="kshik089@gmail.com" data-copy-label="Copy email" contenteditable="false">Copy email</button></article>
+    <article class="contact-card"><span>Phone</span><a href="tel:+919566789162">+91 95667 89162</a><button class="btn small" type="button" data-copy="+91 95667 89162" data-copy-label="Copy phone" contenteditable="false">Copy phone</button></article>
+    <article class="contact-card"><span>LinkedIn</span><a href="https://www.linkedin.com/in/gowshik7" target="_blank" rel="noopener">linkedin.com/in/gowshik7</a><button class="btn small" type="button" data-copy="https://www.linkedin.com/in/gowshik7" data-copy-label="Copy LinkedIn" contenteditable="false">Copy LinkedIn</button></article>
+    <article class="contact-card"><span>GitHub</span><a href="https://github.com/Gowshik-Datahub" target="_blank" rel="noopener">github.com/Gowshik-Datahub</a><button class="btn small" type="button" data-copy="https://github.com/Gowshik-Datahub" data-copy-label="Copy GitHub" contenteditable="false">Copy GitHub</button></article>
+  </div>
+  <form id="form" novalidate>
+    <label for="name">Name</label><input id="name" required>
+    <label for="email">Email</label><input id="email" type="email" required>
+    <label for="subject">Subject</label><input id="subject" required>
+    <label for="message">Message</label><textarea id="message" rows="4" required></textarea>
+    <p id="status" role="status"></p>
+    <button class="btn primary" type="submit">Send message</button>
+    <p class="muted soft">This form opens your email app with the message filled in. Sending directly from the page needs a backend or a form service such as Formspree.</p>
+  </form>
+</section>
+</main>
+
+<footer>
+  <p><a href="#home">Home</a> · <a href="#projects">Projects</a> · <a href="#contact">Contact</a> · <a href="https://github.com/Gowshik-Datahub" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/gowshik7" target="_blank" rel="noopener">LinkedIn</a> · <a href="mailto:kshik089@gmail.com">Email</a></p>
+  <p>© <span id="year"></span> Gowshik A · Aspiring Data Analyst</p>
+</footer>
+<button id="top" aria-label="Back to top" hidden>Top</button>
+<dialog id="cropDialog" class="modal" aria-labelledby="cropTitle">
+  <h2 id="cropTitle">Adjust photo</h2>
+  <p class="muted" style="margin:0;font-size:.85rem">Drag to move. Use the slider to zoom.</p>
+  <div class="crop-stage"><canvas id="cropCanvas" width="520" height="520" tabindex="0" aria-label="Photo preview. Drag or use arrow keys to move the photo."></canvas></div>
+  <label class="crop-zoom" for="cropZoom">Zoom <input id="cropZoom" type="range" min="0.3" max="4" step="0.01" value="1"></label>
+  <div class="row">
+    <button class="btn" id="cropFill" type="button">Fill frame</button>
+    <button class="btn" id="cropFit" type="button">Fit whole photo</button>
+    <button class="btn" id="cropRotate" type="button">Rotate</button>
+  </div>
+  <div class="actions">
+    <button class="btn" id="cropCancel" type="button">Cancel</button>
+    <button class="btn primary" id="cropSave" type="button">Save photo</button>
+  </div>
+</dialog>
+<dialog id="settingsDialog" class="modal" aria-labelledby="setTitle">
+  <h2 id="setTitle">Settings</h2>
+  <div class="set-group">
+    <h3>Status badge</h3>
+    <label for="setBadge">Availability / current role text</label>
+    <input id="setBadge" type="text" placeholder="e.g. Working at XYZ Company">
+  </div>
+  <div class="set-group">
+    <h3>Typing line</h3>
+    <label for="setPhrases">Sentences that type and erase (one per line)</label>
+    <textarea id="setPhrases" rows="4"></textarea>
+    <label for="setSpeed">Typing speed</label>
+    <select id="setSpeed"><option value="slow">Slow</option><option value="normal">Normal</option><option value="fast">Fast</option></select>
+    <p id="settingsMsg" role="status"></p>
+  </div>
+  <div class="set-group">
+    <h3>Site info <span class="lock">Read only</span></h3>
+    <dl class="set-info">
+      <dt>Owner</dt><dd>Gowshik A</dd>
+      <dt>Portfolio version</dt><dd>2.0</dd>
+      <dt>Profile photo</dt><dd id="infoPhoto">-</dd>
+      <dt>Resume</dt><dd id="infoResume">-</dd>
+      <dt>Saved text edits</dt><dd id="infoEdits">-</dd>
+      <dt>Theme</dt><dd id="infoTheme">-</dd>
+      <dt>Edit password</dt><dd>Set (hidden)</dd>
+      <dt>Resume shortcut</dt><dd>Tab + Caps Lock</dd>
+    </dl>
+  </div>
+  <div class="actions">
+    <button class="btn" id="setDefault" type="button">Restore default</button>
+    <button class="btn" id="setClose" type="button">Close</button>
+    <button class="btn primary" id="setSave" type="button">Save</button>
+  </div>
+</dialog>
+<dialog id="authDialog" aria-labelledby="authTitle">
+  <form id="authForm">
+    <h2 id="authTitle">Owner verification</h2>
+    <p class="muted" id="authText" style="margin:0">Enter your password to unlock portfolio editing.</p>
+    <label for="editPassword">Password</label>
+    <input id="editPassword" type="password" autocomplete="current-password" required>
+    <p id="authError" role="status" aria-live="polite"></p>
+    <div class="auth-actions">
+      <button class="btn" id="cancelAuth" type="button">Cancel</button>
+      <button class="btn primary" id="authSubmit" type="button">Unlock editing</button>
+    </div>
+  </form>
+</dialog>
+<dialog id="resumeViewer" aria-labelledby="rvTitle">
+  <div class="rv-head">
+    <div><h2 id="rvTitle">Gowshik A — Resume</h2><p>Aspiring Data Analyst</p></div>
+    <button class="rv-close" id="rvClose" type="button" aria-label="Close resume">&times;</button>
+  </div>
+  <div class="rv-body" id="rvBody"></div>
+</dialog>
+<div id="resumePanel" role="dialog" aria-labelledby="rpTitle" hidden>
+  <div class="rp-head"><span id="rpTitle">Resume</span><button type="button" id="rpClose" aria-label="Close resume panel">&times;</button></div>
+  <p id="resumeState">No resume added yet.</p>
+  <div class="rp-row">
+    <button class="btn small" id="rpUpload" type="button">Upload</button>
+    <button class="btn small" id="rpRemove" type="button">Remove</button>
+    <button class="btn small primary" id="rpSave" type="button" disabled>Save</button>
+  </div>
+  <input id="resumeIn" type="file" accept="application/pdf" hidden>
+</div>
+<dialog id="linkDialog" class="modal" aria-labelledby="linkTitle">
+  <h2 id="linkTitle">Add a link</h2>
+  <p class="muted" id="linkHelp" style="margin:0;font-size:.85rem">Choose an icon, then paste the link.</p>
+  <div class="icon-pick" id="iconPick" role="group" aria-label="Choose an icon"></div>
+  <label for="linkUrl" id="linkLabel">Link</label>
+  <input id="linkUrl" type="text" inputmode="url" autocomplete="off" spellcheck="false">
+  <p id="linkErr" role="status" aria-live="polite"></p>
+  <div class="actions">
+    <button class="btn" id="linkRemove" type="button">Remove</button>
+    <button class="btn" id="linkCancel" type="button">Cancel</button>
+    <button class="btn primary" id="linkSave" type="button">Save</button>
+  </div>
+</dialog>
+<script>
+// Mobile menu: open and close the navigation on small screens
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+menuBtn.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', open);
+});
+navLinks.addEventListener('click', e => {
+  if (e.target.tagName === 'A') { navLinks.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); }
+});
+
+// Scroll reveal: fade each section in once when it enters the screen
+const revealer = new IntersectionObserver(entries => {
+  entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('show'); revealer.unobserve(en.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealer.observe(el));
+
+// Active navigation link: highlight the section currently in view
+const links = [...navLinks.querySelectorAll('a')];
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id));
+  });
+}, { rootMargin: '-45% 0px -50% 0px' });
+document.querySelectorAll('main section[id]').forEach(s => spy.observe(s));
+
+// Back-to-top button: show after scrolling down
+const topBtn = document.getElementById('top');
+window.addEventListener('scroll', () => { topBtn.hidden = window.scrollY < 500; });
+topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// Contact form: validate, then open the email app (no backend needed)
+const form = document.getElementById('form');
+const status = document.getElementById('status');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  let ok = true;
+  form.querySelectorAll('input,textarea').forEach(f => {
+    const bad = !f.value.trim() || (f.type === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.value));
+    f.classList.toggle('bad', bad);
+    if (bad) ok = false;
+  });
+  status.className = ok ? 'ok' : '';
+  if (!ok) { status.textContent = 'Please fill every field and enter a valid email address.'; return; }
+  status.textContent = 'Opening your email app...';
+  const v = id => encodeURIComponent(document.getElementById(id).value.trim());
+  window.location.href = `mailto:kshik089@gmail.com?subject=${v('subject')}&body=${v('message')}%0A%0AFrom: ${v('name')} (${v('email')})`;
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Theme toggle: switch between dark and light (remembered when the browser allows it)
+const SUN_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>';
+const MOON_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+const themeBtn = document.getElementById('theme');
+function setTheme(t){
+  document.documentElement.dataset.theme = t;
+  const light = t === 'light';
+  themeBtn.innerHTML = light ? MOON_ICON : SUN_ICON;
+  const label = light ? 'Switch to dark theme' : 'Switch to light theme';
+  themeBtn.setAttribute('aria-label', label);
+  themeBtn.title = label;
+  const metaTheme = document.querySelector('meta[name="theme-color"]');
+  if (metaTheme) metaTheme.content = light ? '#f7f6fc' : '#0b0a1f';
+  try{ localStorage.setItem('theme', t); }catch(e){}
+}
+let saved = null; try{ saved = localStorage.getItem('theme'); }catch(e){}
+if (saved) setTheme(saved);
+themeBtn.addEventListener('click', () => setTheme(document.documentElement.dataset.theme === 'light' ? 'dark' : 'light'));
+
+const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Typing line in the hero: cycles through a few honest descriptions of me
+// The sentences and speed can be changed from Settings (password protected)
+const DEFAULT_PHRASES = ['Aspiring Data Analyst', 'Power BI dashboard builder', 'SQL and Python learner'];
+const SPEEDS = { slow: [110, 55, 2400], normal: [70, 35, 1600], fast: [40, 20, 1100] };
+const typed = document.getElementById('typed');
+let typing = { phrases: DEFAULT_PHRASES.slice(), speed: 'normal' };
+try { const s = JSON.parse(typed.dataset.typing || localStorage.getItem('typing') || 'null'); if (s && Array.isArray(s.phrases) && s.phrases.length) typing = s; } catch(e) {}
+try { const s = JSON.parse(localStorage.getItem('typing') || 'null'); if (s && Array.isArray(s.phrases) && s.phrases.length) typing = s; } catch(e) {}
+typed.textContent = typing.phrases[0];
+if (!calm) {
+  let p = 0, c = 0, del = false;
+  (function tick(){
+    if (p >= typing.phrases.length) { p = 0; c = 0; del = false; }
+    const word = typing.phrases[p], [typeMs, eraseMs, holdMs] = SPEEDS[typing.speed] || SPEEDS.normal;
+    typed.textContent = word.slice(0, c);
+    if (!del && c >= word.length) { del = true; return setTimeout(tick, holdMs); }
+    if (del && c <= 0) { del = false; p = (p + 1) % typing.phrases.length; }
+    c += del ? -1 : 1;
+    setTimeout(tick, del ? eraseMs : typeMs);
+  })();
+}
+
+// Counters: count up to each number once
+document.querySelectorAll('[data-n]').forEach(el => {
+  const end = +el.dataset.n;
+  if (calm) return;
+  let t0 = null;
+  el.textContent = '0';
+  requestAnimationFrame(function step(t){
+    t0 = t0 || t;
+    const k = Math.min((t - t0) / 1200, 1);
+    el.textContent = Math.round(end * k).toLocaleString('en-IN');
+    if (k < 1) requestAnimationFrame(step);
+  });
+});
+
+// Chart bars: select a bar to read the real flight counts
+document.addEventListener('click', e => {
+  const b = e.target.closest('button.bar'); if (!b) return;
+  const chart = b.closest('.chart');
+  chart.querySelectorAll('button.bar').forEach(x => x.classList.remove('on'));
+  b.classList.add('on');
+  chart.querySelector('.readout').textContent = b.dataset.t;
+});
+
+// Skill tags: select a skill to see where I used it
+const used = {
+  'Power BI':'Used in both dashboards.', 'DAX':'Used in both dashboards.', 'Excel':'Used in both dashboards.', 'Python':'Used for data cleaning in both dashboards, and covered in my SLA course.',
+  'SQL':'Covered in my SLA Data Analytics course.', 'Pandas':'Covered in my SLA Data Analytics course.', 'NumPy':'Covered in my SLA Data Analytics course.'
+};
+const info = document.getElementById('skillInfo');
+let editing = false;
+
+// Copy each contact method to the clipboard.
+// Tries the modern clipboard first, then the older copy command, which works in more places.
+function legacyCopy(text){
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.setAttribute('readonly', '');
+  ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0';
+  document.body.append(ta); ta.focus(); ta.select(); ta.setSelectionRange(0, text.length);
+  let ok = false; try { ok = document.execCommand('copy'); } catch(e) {}
+  ta.remove(); return ok;
+}
+async function copyText(text){
+  if (legacyCopy(text)) return true;
+  try { if (navigator.clipboard) { await navigator.clipboard.writeText(text); return true; } } catch(e) {}
+  return false;
+}
+document.addEventListener('click', async e => {
+  const button = e.target.closest('[data-copy]'); if (!button || editing) return;
+  const original = button.dataset.copyLabel || 'Copy';
+  if (await copyText(button.dataset.copy)) button.textContent = 'Copied!';
+  else {
+    const link = button.parentElement.querySelector('a');
+    if (link) { const r = document.createRange(); r.selectNodeContents(link); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+    button.textContent = 'Selected - press Ctrl+C';
+  }
+  clearTimeout(button._t); button._t = setTimeout(() => button.textContent = original, 2200);
+});
+
+// ===== Editing mode: change text in the page and keep it in this browser =====
+// Each key below is one editable block. Edits are saved in the browser (localStorage).
+const EDIT = {
+  logo:'.logo', navlinks:'#navLinks', name:'.hero h1', availability:'.badge', lead:'.lead', herobtns:'#home .btns',
+  stats2:'.stats', socials:'.icons',
+  aboutnum:'#about .num', abouth2:'#about h2', abouttext:'#aboutText',
+  edunum:'#education .num', eduh2:'#education h2', edu:'#education .cards',
+  skillsnum:'#skills .num', skillsh2:'#skills h2', skills:'#skills .cards', soft:'#skills > p.soft:not(#skillInfo)',
+  trainnum:'#training .num', trainh2:'#training h2', train:'#training .card', note:'#training > p.soft',
+  projnum:'#projects .num', projh2:'#projects h2', proj2:'#projects .cards',
+  achnum:'#achievements .num', achh2:'#achievements h2', ach:'#achievements .cards',
+  contactnum:'#contact .num', contacth2:'#contact h2', contact2:'#contact .contact-grid', contactnote:'#contact form > p.soft',
+  footer:'footer'
+};
+const editEls = Object.entries(EDIT).map(([k, s]) => { const el = document.querySelector(s); if (el) el.dataset.ed = k; return el; }).filter(Boolean);
+
+const DEFAULT_BADGE = 'Open to fresher Data Analyst roles';
+function applyBadgeText(text){
+  const badge = document.querySelector('.badge');
+  if (!badge) return;
+  let span = document.getElementById('badgeText');
+  if (!span) {
+    badge.innerHTML = '<span class="dot"></span><span id="badgeText"></span>';
+    span = document.getElementById('badgeText');
+  }
+  span.textContent = text;
+}
+function syncStatNumbers(){
+  document.querySelectorAll('.stats b').forEach(b => {
+    const raw = b.textContent.replace(/,/g, '').trim();
+    if (/^\d+$/.test(raw)) b.dataset.n = raw;
+    else b.removeAttribute('data-n');
+  });
+}
+function cleanHTML(el){ const c = el.cloneNode(true); c.querySelectorAll('.on').forEach(x => x.classList.remove('on')); c.querySelectorAll('.x,.addtag').forEach(x => x.remove()); c.removeAttribute('contenteditable'); return c.innerHTML; }
+function save(){ syncStatNumbers(); try{ editEls.forEach(el => localStorage.setItem('ed:' + el.dataset.ed, cleanHTML(el))); }catch(e){} }
+function applyTags(){ document.querySelectorAll('#skills .tags li').forEach(li => { li.tabIndex = 0; li.setAttribute('role', 'button'); }); }
+
+// Load saved edits
+editEls.forEach(el => { let v = null; try{ v = localStorage.getItem('ed:' + el.dataset.ed); }catch(e){} if (v !== null) el.innerHTML = v; cleanFormatting(el); });
+markGhLinks();
+try { const savedBadge = localStorage.getItem('badgeText'); if (savedBadge && savedBadge.trim()) applyBadgeText(savedBadge.trim()); } catch(e) {}
+applyTags();
+
+// Skill tags: select one to see where I used it (works with tags added later too)
+function pickSkill(li){
+  document.querySelectorAll('#skills .tags li').forEach(x => x.classList.remove('on'));
+  li.classList.add('on');
+  const name = li.textContent.trim();
+  info.textContent = name + ': ' + (used[name] || 'Part of my everyday toolkit.');
+}
+// Real buttons for remove (x) and add skill, shown only while editing
+function decorate(){
+  document.querySelectorAll('[data-ed] .tags li, [data-ed] .card, .stats > div, .icons a').forEach(it => {
+    if (!it.querySelector(':scope > .x')) { const b = document.createElement('button'); b.type = 'button'; b.className = 'x'; b.contentEditable = 'false'; b.setAttribute('aria-label', it.matches('.icons a') ? 'Remove ' + (it.getAttribute('aria-label') || 'link') : 'Remove'); b.textContent = '\u00D7'; it.append(b); }
+  });
+  document.querySelectorAll('#skills .card').forEach(c => {
+    if (!c.querySelector(':scope > .addtag')) { const b = document.createElement('button'); b.type = 'button'; b.className = 'addtag'; b.contentEditable = 'false'; b.textContent = '+ Add skill'; c.append(b); }
+  });
+}
+function undecorate(){ document.querySelectorAll('.x,.addtag').forEach(x => x.remove()); }
+document.addEventListener('click', e => {
+  const x = e.target.closest('.x');
+  if (x && editing) {
+    e.preventDefault();
+    const item = x.parentElement;
+    if (item.matches('.stats > div') && document.querySelectorAll('.stats > div').length <= 1) { alert('Keep at least one stat.'); return; }
+    if (item.matches('.card') && !confirm('Remove this whole card?')) return;
+    item.remove(); save(); return;
+  }
+  const add = e.target.closest('.addtag');
+  if (add && editing) {
+    const name = prompt('New skill name:');
+    if (name && name.trim()) { const li = document.createElement('li'); li.textContent = name.trim(); add.closest('.card').querySelector('.tags').append(li); applyTags(); decorate(); save(); }
+    return;
+  }
+  if (editing && e.target.closest('#photo')) { document.getElementById('photoIn').click(); return; }
+  if (editing && e.target.closest('main a, footer a, .nav .logo, #navLinks a, summary')) { e.preventDefault(); return; }
+  const li = e.target.closest('#skills .tags li');
+  if (li && !editing) pickSkill(li);
+});
+document.addEventListener('keydown', e => {
+  if (editing && e.target.closest && e.target.closest('summary')) {
+    if (e.key === ' ') { e.preventDefault(); document.execCommand('insertText', false, ' '); return; }
+    if (e.key === 'Enter') { e.preventDefault(); return; }
+  }
+  const li = e.target.closest && e.target.closest('#skills .tags li');
+  if (li && !editing && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); pickSkill(li); }
+});
+
+const editBtn = document.getElementById('editBtn'), bar = document.getElementById('bar');
+const authDialog = document.getElementById('authDialog'), authForm = document.getElementById('authForm');
+const editPassword = document.getElementById('editPassword'), authError = document.getElementById('authError');
+const passwordDigest = '9b604da4aed91886842bd10f0e841f2a93665679c7628fcc978f82d121f95c44';
+function setEditing(on){
+  editing = on;
+  document.body.classList.toggle('editing', on);
+  bar.hidden = !on;
+  editBtn.setAttribute('aria-pressed', on);
+  editBtn.textContent = on ? 'Done' : '✎ Edit';
+  editEls.forEach(el => on ? el.setAttribute('contenteditable', 'true') : el.removeAttribute('contenteditable'));
+  document.querySelectorAll('.chart, [data-copy], #viewResume, .gh-link, .icons, #addSocial').forEach(s => s.setAttribute('contenteditable', 'false'));
+  document.querySelectorAll('summary').forEach(s => on ? s.setAttribute('contenteditable', 'true') : s.removeAttribute('contenteditable'));
+  if (on) { document.querySelectorAll('details:not(.chart-details)').forEach(d => d.open = true); decorate(); }
+  else { undecorate(); document.querySelectorAll('.tags li').forEach(li => { if (!li.textContent.trim()) li.remove(); }); save(); }
+}
+// The same password dialog unlocks either text editing or the resume panel
+let authMode = 'edit';
+function askPassword(mode){
+  authMode = mode;
+  const what = { resume: 'manage your resume', settings: 'open settings', edit: 'unlock portfolio editing' }[mode];
+  document.getElementById('authText').textContent = 'Enter your password to ' + what + '.';
+  document.getElementById('authSubmit').textContent = mode === 'resume' ? 'Unlock resume' : mode === 'settings' ? 'Open settings' : 'Unlock editing';
+  authError.textContent = '';
+  editPassword.value = '';
+  authDialog.showModal();
+  editPassword.focus();
+}
+editBtn.addEventListener('click', () => {
+  if (editing) { setEditing(false); return; }
+  askPassword('edit');
+});
+document.getElementById('cancelAuth').addEventListener('click', () => authDialog.close());
+// crypto.subtle only exists on https/localhost, so fall back to a plain JS SHA-256 elsewhere
+function sha256Fallback(str){
+  const K = [0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+  const H = [0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+  const bytes = Array.from(new TextEncoder().encode(str));
+  const bitLen = bytes.length * 8;
+  bytes.push(0x80);
+  while (bytes.length % 64 !== 56) bytes.push(0);
+  for (let i = 7; i >= 0; i--) bytes.push(i > 3 ? 0 : (bitLen >>> (i * 8)) & 0xff);
+  const rotr = (x, n) => (x >>> n) | (x << (32 - n));
+  for (let o = 0; o < bytes.length; o += 64) {
+    const w = new Array(64);
+    for (let i = 0; i < 16; i++) w[i] = (bytes[o+i*4] << 24) | (bytes[o+i*4+1] << 16) | (bytes[o+i*4+2] << 8) | bytes[o+i*4+3];
+    for (let i = 16; i < 64; i++) {
+      const s0 = rotr(w[i-15], 7) ^ rotr(w[i-15], 18) ^ (w[i-15] >>> 3);
+      const s1 = rotr(w[i-2], 17) ^ rotr(w[i-2], 19) ^ (w[i-2] >>> 10);
+      w[i] = (w[i-16] + s0 + w[i-7] + s1) | 0;
+    }
+    let [a, b, c, d, e, f, g, h] = H;
+    for (let i = 0; i < 64; i++) {
+      const t1 = (h + (rotr(e, 6) ^ rotr(e, 11) ^ rotr(e, 25)) + ((e & f) ^ (~e & g)) + K[i] + w[i]) | 0;
+      const t2 = ((rotr(a, 2) ^ rotr(a, 13) ^ rotr(a, 22)) + ((a & b) ^ (a & c) ^ (b & c))) | 0;
+      h = g; g = f; f = e; e = (d + t1) | 0; d = c; c = b; b = a; a = (t1 + t2) | 0;
+    }
+    [a, b, c, d, e, f, g, h].forEach((v, i) => { H[i] = (H[i] + v) | 0; });
+  }
+  return H.map(v => (v >>> 0).toString(16).padStart(8, '0')).join('');
+}
+async function hashPassword(str){
+  if (window.crypto && crypto.subtle) {
+    try {
+      const bytes = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+      return Array.from(new Uint8Array(bytes), b => b.toString(16).padStart(2, '0')).join('');
+    } catch (err) {}
+  }
+  return sha256Fallback(str);
+}
+// Sandboxed previews can block form submission, so the check runs from the button click and Enter key directly
+async function checkPassword(){
+  const typed = editPassword.value.normalize('NFKC').replace(/[\u200B-\u200D\uFEFF\s]/g, '').toLowerCase();
+  let digest = '';
+  try { digest = await hashPassword(typed); } catch (err) { digest = sha256Fallback(typed); }
+  if (digest !== passwordDigest) { authError.textContent = 'That password is not correct. Check Caps Lock and try again.'; editPassword.select(); return; }
+  authDialog.close();
+  if (authMode === 'resume') openResumePanel();
+  else if (authMode === 'settings') openSettings();
+  else setEditing(true);
+}
+document.getElementById('authSubmit').addEventListener('click', checkPassword);
+editPassword.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.isComposing && e.keyCode !== 229) { e.preventDefault(); checkPassword(); }
+});
+authForm.addEventListener('submit', e => { e.preventDefault(); checkPassword(); });
+document.getElementById('done').addEventListener('click', () => setEditing(false));
+// Text-only editing: words change, but fonts, sizes and colours stay exactly as designed.
+// Browsers sometimes add inline font styles while you type or delete, so those are removed.
+function cleanFormatting(root){
+  root.querySelectorAll('font').forEach(el => el.replaceWith(...el.childNodes));
+  root.querySelectorAll('[style]').forEach(el => {
+    if (el.closest('.chart')) return;
+    if (el.tagName === 'SPAN' && el.attributes.length === 1) el.replaceWith(...el.childNodes);
+    else el.removeAttribute('style');
+  });
+}
+document.addEventListener('beforeinput', e => {
+  if (!editing || !e.target.closest || !e.target.closest('[data-ed]')) return;
+  const t = e.inputType || '';
+  if (t.startsWith('format') || t === 'insertFromDrop') { e.preventDefault(); return; }
+  if (t === 'insertParagraph') {
+    const sel = getSelection(), node = sel && sel.anchorNode;
+    const at = node && (node.nodeType === 1 ? node : node.parentElement);
+    if (at && at.closest('ul:not(.tags) > li')) return;
+    e.preventDefault();
+    if (at && !at.closest('h1, h2, h3, .num, .tags li, summary, a, .btn, b, .badge, .logo')) document.execCommand('insertLineBreak');
+  }
+});
+document.addEventListener('drop', e => { if (editing && e.target.closest && e.target.closest('[data-ed]')) e.preventDefault(); });
+document.addEventListener('input', e => {
+  if (!editing) return;
+  const host = e.target.closest && e.target.closest('[data-ed]');
+  if (host) cleanFormatting(host);
+  applyTags(); save();
+});
+// Paste as plain text so pasted content keeps the site's design
+document.addEventListener('paste', e => {
+  if (editing && e.target.closest('[data-ed]')) { e.preventDefault(); document.execCommand('insertText', false, (e.clipboardData || window.clipboardData).getData('text')); }
+});
+// "+ Add another" buttons copy the last card, then you edit the copy
+document.querySelectorAll('.addbtn[data-add]').forEach(b => b.addEventListener('click', () => {
+  const all = document.querySelectorAll(b.dataset.add), last = all[all.length - 1];
+  if (!last) return;
+  const copy = last.cloneNode(true);
+  last.after(copy);
+  copy.querySelectorAll('.gh-link').forEach(g => g.replaceWith(makeGh('')));
+  applyTags(); decorate(); save();
+}));
+// Reset asks for a second click instead of a popup, because some browsers block popups
+const resetBtn = document.getElementById('reset');
+resetBtn.addEventListener('click', () => {
+  if (!resetBtn.dataset.sure) {
+    resetBtn.dataset.sure = '1'; resetBtn.textContent = 'Click again to reset';
+    setTimeout(() => { delete resetBtn.dataset.sure; resetBtn.textContent = 'Reset edits'; }, 3000);
+    return;
+  }
+  try{ Object.keys(localStorage).filter(k => k.startsWith('ed:') || k === 'photo' || k === 'badgeText').forEach(k => localStorage.removeItem(k)); }catch(e){}
+  location.reload();
+});
+
+// Download updated page: saves this page with all your edits and photo built in
+document.getElementById('dlPage').addEventListener('click', () => {
+  syncStatNumbers();
+  const root = document.documentElement.cloneNode(true);
+  root.querySelector('body').classList.remove('editing');
+  root.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+  root.querySelectorAll('.x,.addtag').forEach(el => el.remove());
+  root.querySelectorAll('dialog[open]').forEach(d => d.removeAttribute('open'));
+  root.querySelectorAll('.on').forEach(el => el.classList.remove('on'));
+  root.querySelector('#bar').hidden = true;
+  root.querySelector('#resumePanel').hidden = true;
+  root.querySelector('#prog').removeAttribute('style');
+  const t = root.querySelector('#typed'); t.textContent = typing.phrases[0]; t.dataset.typing = JSON.stringify(typing);
+  root.querySelector('#editBtn').textContent = '✎ Edit';
+  root.querySelector('#editBtn').setAttribute('aria-pressed', 'false');
+  root.querySelectorAll('[data-n]').forEach(el => { const n = Number(el.dataset.n); if (!Number.isNaN(n)) el.textContent = n.toLocaleString('en-IN'); });
+  const blob = new Blob(['<!DOCTYPE html>\n' + root.outerHTML], { type: 'text/html' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = 'index.html';
+  document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+});
+
+document.addEventListener('focusout', () => { if (editing) decorate(); });
+
+// Profile photo: click the frame while editing, pick an image (it is resized and saved)
+const photo = document.getElementById('photo'), photoIn = document.getElementById('photoIn');
+photo.setAttribute('role', 'button');
+photo.setAttribute('tabindex', '0');
+photo.setAttribute('aria-label', 'Profile photo. Enter edit mode, then activate to add or replace your photo.');
+function showPhoto(src){
+  photo.innerHTML = src ? '<img alt="Gowshik A" src="' + src + '">' : '[Add Profile Photo]';
+  photo.classList.toggle('has-img', !!src);
+  photo.setAttribute('aria-label', src ? 'Profile photo of Gowshik A' : 'Add profile photo');
+}
+try{ const p = localStorage.getItem('photo'); if (p) showPhoto(p); }catch(e){}
+if (photo.querySelector('img')) photo.classList.add('has-img');
+photo.addEventListener('keydown', e => { if (editing && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); photoIn.click(); } });
+document.getElementById('addPhoto').addEventListener('click', () => photoIn.click());
+document.getElementById('rmPhoto').addEventListener('click', () => { showPhoto(''); try{ localStorage.removeItem('photo'); }catch(e){} });
+
+// Photo cropper: move, zoom, fill or fit, and rotate before saving. The preview has the same rounded corners as the frame.
+const cropDialog = document.getElementById('cropDialog'), cropCanvas = document.getElementById('cropCanvas'), cropZoom = document.getElementById('cropZoom');
+const cctx = cropCanvas.getContext('2d');
+const crop = { img: null, zoom: 1, x: 0, y: 0, rot: 0 };
+function coverScale(size){ const r = crop.rot % 180, w = r ? crop.img.height : crop.img.width, h = r ? crop.img.width : crop.img.height; return size / Math.min(w, h); }
+function fitScale(size){ const r = crop.rot % 180, w = r ? crop.img.height : crop.img.width, h = r ? crop.img.width : crop.img.height; return size / Math.max(w, h); }
+function drawCrop(ctx, size){
+  const k = size / cropCanvas.width;
+  ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--card').trim() || '#13122e';
+  ctx.fillRect(0, 0, size, size);
+  ctx.save();
+  ctx.translate(size / 2 + crop.x * k, size / 2 + crop.y * k);
+  ctx.rotate(crop.rot * Math.PI / 180);
+  const s = coverScale(size) * crop.zoom;
+  ctx.drawImage(crop.img, -crop.img.width * s / 2, -crop.img.height * s / 2, crop.img.width * s, crop.img.height * s);
+  ctx.restore();
+}
+const redraw = () => drawCrop(cctx, cropCanvas.width);
+function setZoom(z){ crop.zoom = Math.min(4, Math.max(+cropZoom.min, z)); cropZoom.value = crop.zoom; redraw(); }
+photoIn.addEventListener('change', () => {
+  const f = photoIn.files[0]; photoIn.value = ''; if (!f) return;
+  if (!f.type.startsWith('image/')) { alert('Choose an image file.'); return; }
+  if (f.size > 15 * 1024 * 1024) { alert('Choose an image smaller than 15 MB.'); return; }
+  const url = URL.createObjectURL(f), img = new Image();
+  img.onload = () => { crop.img = img; crop.x = 0; crop.y = 0; crop.rot = 0; setZoom(1); cropDialog.showModal(); cropCanvas.focus(); URL.revokeObjectURL(url); };
+  img.onerror = () => { URL.revokeObjectURL(url); alert('This image could not be opened. Try another file.'); };
+  img.src = url;
+});
+cropZoom.addEventListener('input', () => setZoom(+cropZoom.value));
+document.getElementById('cropFill').addEventListener('click', () => { crop.x = 0; crop.y = 0; setZoom(1); });
+document.getElementById('cropFit').addEventListener('click', () => { crop.x = 0; crop.y = 0; setZoom(fitScale(cropCanvas.width) / coverScale(cropCanvas.width)); });
+document.getElementById('cropRotate').addEventListener('click', () => { crop.rot = (crop.rot + 90) % 360; redraw(); });
+let drag = null;
+cropCanvas.addEventListener('pointerdown', e => { drag = { x: e.clientX, y: e.clientY, ox: crop.x, oy: crop.y }; cropCanvas.setPointerCapture(e.pointerId); });
+cropCanvas.addEventListener('pointermove', e => {
+  if (!drag) return;
+  const k = cropCanvas.width / cropCanvas.getBoundingClientRect().width;
+  crop.x = drag.ox + (e.clientX - drag.x) * k; crop.y = drag.oy + (e.clientY - drag.y) * k; redraw();
+});
+cropCanvas.addEventListener('pointerup', () => drag = null);
+cropCanvas.addEventListener('pointercancel', () => drag = null);
+cropCanvas.addEventListener('wheel', e => { e.preventDefault(); setZoom(crop.zoom * (e.deltaY < 0 ? 1.06 : 0.94)); }, { passive: false });
+cropCanvas.addEventListener('keydown', e => {
+  const step = 12, moves = { ArrowLeft: [-step, 0], ArrowRight: [step, 0], ArrowUp: [0, -step], ArrowDown: [0, step] };
+  if (moves[e.key]) { e.preventDefault(); crop.x += moves[e.key][0]; crop.y += moves[e.key][1]; redraw(); }
+});
+document.getElementById('cropCancel').addEventListener('click', () => cropDialog.close());
+document.getElementById('cropSave').addEventListener('click', () => {
+  const out = document.createElement('canvas'); out.width = out.height = 600;
+  drawCrop(out.getContext('2d'), 600);
+  const d = out.toDataURL('image/jpeg', 0.88);
+  showPhoto(d);
+  try{ localStorage.setItem('photo', d); }catch(e){}
+  cropDialog.close();
+});
+
+// ===== Settings: owner-only, password protected =====
+const settingsDialog = document.getElementById('settingsDialog'), setBadge = document.getElementById('setBadge'), setPhrases = document.getElementById('setPhrases'), setSpeed = document.getElementById('setSpeed'), settingsMsg = document.getElementById('settingsMsg');
+document.getElementById('settingsBtn').addEventListener('click', () => askPassword('settings'));
+async function openSettings(){
+  const badgeSpan = document.getElementById('badgeText');
+  setBadge.value = (badgeSpan ? badgeSpan.textContent : (document.querySelector('.badge')?.textContent || '')).trim() || DEFAULT_BADGE;
+  setPhrases.value = typing.phrases.join('\n');
+  setSpeed.value = typing.speed || 'normal';
+  settingsMsg.textContent = '';
+  document.getElementById('infoPhoto').textContent = photo.querySelector('img') ? 'Added' : 'Not added';
+  document.getElementById('infoTheme').textContent = document.documentElement.dataset.theme === 'light' ? 'Light' : 'Dark';
+  let n = 0; try { n = Object.keys(localStorage).filter(k => k.startsWith('ed:')).length; } catch(e) {}
+  document.getElementById('infoEdits').textContent = n + (n === 1 ? ' section' : ' sections');
+  document.getElementById('infoResume').textContent = 'Checking...';
+  settingsDialog.showModal();
+  setBadge.focus();
+  const r = await getResume();
+  document.getElementById('infoResume').textContent = r && r.file ? 'Added' : 'Not added';
+}
+document.getElementById('setSave').addEventListener('click', () => {
+  const badgeVal = setBadge.value.trim();
+  if (!badgeVal) { settingsMsg.textContent = 'Enter a status badge text.'; return; }
+  const list = setPhrases.value.split('\n').map(s => s.trim()).filter(Boolean);
+  if (!list.length) { settingsMsg.textContent = 'Add at least one sentence.'; return; }
+  applyBadgeText(badgeVal);
+  typing = { phrases: list, speed: setSpeed.value };
+  try {
+    localStorage.setItem('badgeText', badgeVal);
+    const badgeEl = document.querySelector('.badge');
+    if (badgeEl && badgeEl.dataset.ed) localStorage.setItem('ed:' + badgeEl.dataset.ed, cleanHTML(badgeEl));
+    localStorage.setItem('typing', JSON.stringify(typing));
+  } catch(e) {}
+  settingsMsg.textContent = 'Saved. Status badge and typing line updated.';
+});
+document.getElementById('setDefault').addEventListener('click', () => { setBadge.value = DEFAULT_BADGE; setPhrases.value = DEFAULT_PHRASES.join('\n'); setSpeed.value = 'normal'; settingsMsg.textContent = 'Defaults filled in. Click Save to apply.'; });
+document.getElementById('setClose').addEventListener('click', () => settingsDialog.close());
+
+// ===== Resume: view-only viewer for visitors, owner manages it with Tab + Caps Lock =====
+// The PDF is kept in this browser's IndexedDB, which holds larger files than localStorage.
+const resumeDB = new Promise((resolve, reject) => {
+  const req = indexedDB.open('portfolio', 1);
+  req.onupgradeneeded = () => req.result.createObjectStore('files');
+  req.onsuccess = () => resolve(req.result);
+  req.onerror = () => reject(req.error);
+});
+async function resumeStore(mode, fn){ const db = await resumeDB; return new Promise((resolve, reject) => { const tx = db.transaction('files', mode), r = fn(tx.objectStore('files')); tx.oncomplete = () => resolve(r && r.result); tx.onerror = () => reject(tx.error); }); }
+const getResume = () => resumeStore('readonly', s => s.get('resume')).catch(() => null);
+const viewResume = document.getElementById('viewResume'), resumeViewer = document.getElementById('resumeViewer'), rvBody = document.getElementById('rvBody');
+const resumePanel = document.getElementById('resumePanel'), resumeState = document.getElementById('resumeState'), resumeIn = document.getElementById('resumeIn');
+let resumeUrl = '';
+async function refreshResume(){
+  const r = await getResume();
+  if (resumeUrl) { URL.revokeObjectURL(resumeUrl); resumeUrl = ''; }
+  if (r && r.file) resumeUrl = URL.createObjectURL(r.file);
+  viewResume.textContent = resumeUrl ? 'View Resume' : 'Resume not added';
+  viewResume.classList.toggle('off', !resumeUrl);
+  viewResume.setAttribute('aria-disabled', String(!resumeUrl));
+  resumeState.textContent = r && r.file ? 'Current: ' + r.name : 'No resume added yet.';
+  document.getElementById('rpRemove').disabled = !resumeUrl;
+}
+refreshResume();
+viewResume.addEventListener('click', () => {
+  if (!resumeUrl) return;
+  rvBody.innerHTML = '';
+  const frame = document.createElement('iframe');
+  frame.title = 'Gowshik A resume';
+  frame.src = resumeUrl + '#toolbar=0&navpanes=0&view=FitH';
+  rvBody.append(frame);
+  resumeViewer.showModal();
+});
+document.getElementById('rvClose').addEventListener('click', () => resumeViewer.close());
+resumeViewer.addEventListener('click', e => { if (e.target === resumeViewer) resumeViewer.close(); });
+resumeViewer.addEventListener('close', () => { rvBody.innerHTML = ''; viewResume.focus(); });
+
+function openResumePanel(){ resumePanel.hidden = false; document.getElementById('rpUpload').focus(); }
+document.getElementById('rpClose').addEventListener('click', () => { resumePanel.hidden = true; });
+document.getElementById('rpUpload').addEventListener('click', () => resumeIn.click());
+let pendingResume = null;
+const rpSave = document.getElementById('rpSave');
+resumeIn.addEventListener('change', () => {
+  const f = resumeIn.files[0]; resumeIn.value = '';
+  if (!f) return;
+  if (f.type !== 'application/pdf') { alert('Choose a PDF file.'); return; }
+  if (f.size > 20 * 1024 * 1024) { alert('Choose a PDF smaller than 20 MB.'); return; }
+  pendingResume = f;
+  resumeState.textContent = 'Selected: ' + f.name + ' (click Save)';
+  rpSave.disabled = false;
+});
+rpSave.addEventListener('click', async () => {
+  if (!pendingResume) return;
+  try {
+    await resumeStore('readwrite', s => s.put({ file: pendingResume, name: pendingResume.name }, 'resume'));
+    pendingResume = null; rpSave.disabled = true;
+    await refreshResume();
+    resumeState.textContent += ' — saved';
+  } catch(e) { alert('The resume could not be saved in this browser.'); }
+});
+document.getElementById('rpRemove').addEventListener('click', async () => {
+  if (!confirm('Remove your resume from this site?')) return;
+  await resumeStore('readwrite', s => s.delete('resume')).catch(() => {});
+  refreshResume();
+});
+
+// Secret owner shortcut: hold Tab and press Caps Lock (either order)
+const held = new Set();
+document.addEventListener('keydown', e => {
+  const k = e.key === 'CapsLock' || e.code === 'CapsLock' ? 'CapsLock' : (e.key === 'Tab' || e.code === 'Tab' ? 'Tab' : e.key);
+  held.add(k);
+  if (held.has('Tab') && held.has('CapsLock')) {
+    e.preventDefault();
+    held.clear();
+    resumePanel.hidden ? openResumePanel() : (resumePanel.hidden = true);
+  }
+}, true);
+document.addEventListener('keyup', e => { held.delete(e.key); held.delete(e.code); }, true);
+window.addEventListener('blur', () => held.clear());
+document.addEventListener('keydown', e => { if (e.key === 'Escape') resumePanel.hidden = true; });
+
+// ===== Links: GitHub buttons on projects and the social icons under the hero =====
+const ICONS = {
+  github:   { label: 'GitHub', kind: 'url', ph: 'https://github.com/username', d: '<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>' },
+  linkedin: { label: 'LinkedIn', kind: 'url', ph: 'https://www.linkedin.com/in/username', d: '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/>' },
+  email:    { label: 'Email', kind: 'email', ph: 'name@example.com', d: '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/>' },
+  phone:    { label: 'Phone', kind: 'phone', ph: '+91 95667 89162', d: '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>' },
+  whatsapp: { label: 'WhatsApp', kind: 'url', ph: 'https://wa.me/919566789162', d: '<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>' },
+  website:  { label: 'Website', kind: 'url', ph: 'https://yourwebsite.com', d: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>' },
+  portfolio:{ label: 'Portfolio', kind: 'url', ph: 'https://link-to-your-work.com', d: '<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>' },
+  resume:   { label: 'Resume', kind: 'url', ph: 'https://drive.google.com/your-resume', d: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>' },
+  kaggle:   { label: 'Kaggle', kind: 'url', ph: 'https://www.kaggle.com/username', d: '<path d="M7 3v18M17 3l-8 9 8 9"/>' },
+  tableau:  { label: 'Tableau', kind: 'url', ph: 'https://public.tableau.com/app/profile/username', d: '<path d="M12 3v6M9 6h6M12 15v6M9 18h6M3 12h6M6 9v6M15 12h6M18 9v6"/>' },
+  leetcode: { label: 'LeetCode', kind: 'url', ph: 'https://leetcode.com/u/username', d: '<path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/>' },
+  medium:   { label: 'Blog', kind: 'url', ph: 'https://medium.com/@username', d: '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>' },
+  x:        { label: 'X (Twitter)', kind: 'url', ph: 'https://x.com/username', d: '<path d="M4 4l16 16M20 4L4 20"/>' },
+  instagram:{ label: 'Instagram', kind: 'url', ph: 'https://www.instagram.com/username', d: '<rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/>' },
+  youtube:  { label: 'YouTube', kind: 'url', ph: 'https://www.youtube.com/@channel', d: '<path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><path d="M9.75 15.02l5.75-3.27-5.75-3.27z"/>' }
+};
+const iconSvg = d => '<svg viewBox="0 0 24 24" aria-hidden="true">' + d + '</svg>';
+function makeGh(href){
+  let el;
+  if (href) {
+    el = document.createElement('a');
+    el.className = 'btn small gh-link'; el.href = href; el.target = '_blank'; el.rel = 'noopener';
+    el.textContent = 'View on GitHub';
+  } else {
+    el = document.createElement('button');
+    el.type = 'button'; el.className = 'btn small off gh-link gh-empty';
+    el.textContent = '+ Add GitHub link';
+  }
+  if (editing) el.contentEditable = 'false';
+  return el;
+}
+// Older saved edits used a text placeholder; turn it into the new GitHub button
+function markGhLinks(){
+  document.querySelectorAll('#projects .card > .btn.small').forEach(b => {
+    if (b.classList.contains('gh-link')) return;
+    if (b.matches('a[href]')) b.classList.add('gh-link');
+    else if (b.classList.contains('off')) b.replaceWith(makeGh(''));
+  });
+}
+function buildSocial(key, href){
+  const v = ICONS[key], a = document.createElement('a');
+  a.href = href; a.dataset.icon = key;
+  a.setAttribute('aria-label', v.label); a.title = v.label;
+  if (/^https?:/i.test(href)) { a.target = '_blank'; a.rel = 'noopener'; }
+  a.innerHTML = iconSvg(v.d);
+  return a;
+}
+function iconKeyOf(a){
+  if (a.dataset.icon && ICONS[a.dataset.icon]) return a.dataset.icon;
+  const name = (a.getAttribute('aria-label') || '').toLowerCase();
+  return Object.keys(ICONS).find(k => ICONS[k].label.toLowerCase() === name) || 'website';
+}
+function normalizeLink(kind, raw){
+  const v = raw.trim();
+  if (!v) return null;
+  if (kind === 'email') {
+    const m = v.replace(/^mailto:/i, '');
+    return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m) ? 'mailto:' + m : null;
+  }
+  if (kind === 'phone') {
+    const n = v.replace(/^tel:/i, '').replace(/[^\d+]/g, '');
+    return n.replace(/\D/g, '').length >= 6 ? 'tel:' + n : null;
+  }
+  try {
+    const u = new URL(/^https?:\/\//i.test(v) ? v : 'https://' + v);
+    return (u.protocol === 'https:' || u.protocol === 'http:') && u.hostname.includes('.') ? u.href : null;
+  } catch (e) { return null; }
+}
+const linkDialog = document.getElementById('linkDialog'), iconPick = document.getElementById('iconPick');
+const linkUrl = document.getElementById('linkUrl'), linkErr = document.getElementById('linkErr'), linkRemove = document.getElementById('linkRemove');
+let linkCtx = null;
+Object.entries(ICONS).forEach(([k, v]) => {
+  const b = document.createElement('button');
+  b.type = 'button'; b.dataset.icon = k; b.setAttribute('aria-pressed', 'false');
+  b.innerHTML = iconSvg(v.d) + '<span>' + v.label + '</span>';
+  iconPick.append(b);
+});
+function pickIcon(key){
+  linkCtx.icon = key;
+  iconPick.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.icon === key)));
+  const v = ICONS[key];
+  document.getElementById('linkLabel').textContent = v.kind === 'email' ? 'Email address' : v.kind === 'phone' ? 'Phone number' : v.label + ' link';
+  linkUrl.placeholder = v.ph;
+  linkErr.textContent = '';
+}
+iconPick.addEventListener('click', e => { const b = e.target.closest('button[data-icon]'); if (b) { pickIcon(b.dataset.icon); linkUrl.focus(); } });
+function openLink(mode, el){
+  linkCtx = { mode, el, icon: null };
+  linkErr.textContent = '';
+  iconPick.hidden = mode !== 'social';
+  if (mode === 'github') {
+    document.getElementById('linkTitle').textContent = 'GitHub link';
+    document.getElementById('linkHelp').textContent = 'Paste the GitHub link for this project. It becomes a "View on GitHub" button.';
+    document.getElementById('linkLabel').textContent = 'GitHub link';
+    linkUrl.placeholder = 'https://github.com/Gowshik-Datahub/project-name';
+    linkUrl.value = el.matches('a[href]') ? el.getAttribute('href') : '';
+    linkRemove.hidden = !el.matches('a[href]');
+  } else {
+    document.getElementById('linkTitle').textContent = el ? 'Edit link' : 'Add a link';
+    document.getElementById('linkHelp').textContent = 'Choose an icon, then paste the link.';
+    pickIcon(el ? iconKeyOf(el) : 'website');
+    linkUrl.value = el ? el.getAttribute('href').replace(/^(mailto|tel):/i, '') : '';
+    linkRemove.hidden = !el;
+  }
+  linkDialog.showModal();
+  linkUrl.focus();
+}
+function saveLink(){
+  if (!linkCtx) return;
+  const { mode, el, icon } = linkCtx;
+  const kind = mode === 'github' ? 'url' : ICONS[icon].kind;
+  const href = normalizeLink(kind, linkUrl.value);
+  if (!href) {
+    linkErr.textContent = kind === 'email' ? 'Enter a valid email address.' : kind === 'phone' ? 'Enter a valid phone number.' : 'Enter a valid link, for example ' + linkUrl.placeholder;
+    linkUrl.focus(); return;
+  }
+  if (mode === 'github') el.replaceWith(makeGh(href));
+  else {
+    const a = buildSocial(icon, href);
+    el ? el.replaceWith(a) : document.querySelector('.icons').append(a);
+  }
+  decorate(); save(); linkDialog.close();
+}
+document.getElementById('linkSave').addEventListener('click', saveLink);
+linkUrl.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.isComposing && e.keyCode !== 229) { e.preventDefault(); saveLink(); } });
+document.getElementById('linkCancel').addEventListener('click', () => linkDialog.close());
+linkRemove.addEventListener('click', () => {
+  if (!linkCtx || !linkCtx.el) return;
+  if (linkCtx.mode === 'github') linkCtx.el.replaceWith(makeGh(''));
+  else linkCtx.el.remove();
+  save(); linkDialog.close();
+});
+document.getElementById('addSocial').addEventListener('click', () => { if (editing) openLink('social', null); });
+document.addEventListener('click', e => {
+  if (!editing || e.target.closest('.x')) return;
+  const gh = e.target.closest('#projects .gh-link');
+  if (gh) { e.preventDefault(); openLink('github', gh); return; }
+  const social = e.target.closest('.icons a');
+  if (social) { e.preventDefault(); openLink('social', social); }
+});
+
+// Scroll progress bar
+const prog = document.getElementById('prog');
+window.addEventListener('scroll', () => { prog.style.width = (scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight) * 100) + '%'; });
+
+// Background starfield & shooting comet every 3 seconds
+(() => {
+  const sky = document.getElementById('sky');
+  if (!sky) return;
+  const ctx = sky.getContext('2d');
+  let w = 0, h = 0, dpr = 1;
+  const stars = Array.from({ length: 72 }, () => ({
+    x: Math.random(),
+    y: Math.random(),
+    r: 0.45 + Math.random() * 1.15,
+    a: 0.18 + Math.random() * 0.48,
+    tw: 0.6 + Math.random() * 1.6,
+    ph: Math.random() * Math.PI * 2,
+    vx: (Math.random() - 0.5) * 0.000018,
+    vy: (Math.random() - 0.5) * 0.000018,
+    tint: Math.random() > 0.72
+  }));
+  let comet = null;
+  function spawnComet(){
+    const fromLeft = Math.random() > 0.35;
+    const startX = fromLeft ? w * (0.05 + Math.random() * 0.55) : w * (0.4 + Math.random() * 0.55);
+    const startY = h * (0.02 + Math.random() * 0.28);
+    const angle = fromLeft ? (0.42 + Math.random() * 0.26) : (Math.PI - 0.42 - Math.random() * 0.26);
+    const speed = Math.max(w, h) * (0.58 + Math.random() * 0.22);
+    comet = {
+      x: startX, y: startY,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      len: 145 + Math.random() * 75,
+      age: 0,
+      life: 1.05
+    };
+  }
+  function resize(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = window.innerWidth;
+    h = window.innerHeight;
+    sky.width = Math.floor(w * dpr);
+    sky.height = Math.floor(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  function drawStars(t){
+    const light = document.documentElement.dataset.theme === 'light';
+    stars.forEach(s => {
+      const alpha = t === null ? s.a : s.a * (0.65 + 0.35 * Math.sin(t * s.tw + s.ph));
+      ctx.beginPath();
+      ctx.arc(s.x * w, s.y * h, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = light
+        ? (s.tint ? `rgba(79,70,229,${alpha * 0.30})` : `rgba(124,58,237,${alpha * 0.20})`)
+        : (s.tint ? `rgba(165,155,255,${alpha})` : `rgba(236,235,250,${alpha})`);
+      ctx.fill();
+    });
+  }
+  if (calm) { drawStars(null); return; }
+  let last = performance.now();
+  let cometTimer = 2.3;
+  function frame(now){
+    const dt = Math.min((now - last) / 1000, 0.05);
+    last = now;
+    ctx.clearRect(0, 0, w, h);
+    const light = document.documentElement.dataset.theme === 'light';
+    stars.forEach(s => { s.x = (s.x + s.vx + 1) % 1; s.y = (s.y + s.vy + 1) % 1; });
+    drawStars(now * 0.001);
+    cometTimer += dt;
+    if (cometTimer >= 3) { cometTimer = 0; spawnComet(); }
+    if (comet) {
+      comet.age += dt;
+      comet.x += comet.vx * dt;
+      comet.y += comet.vy * dt;
+      const p = comet.age / comet.life;
+      if (p >= 1) { comet = null; }
+      else {
+        const fade = Math.sin(p * Math.PI);
+        const mag = Math.hypot(comet.vx, comet.vy) || 1;
+        const tx = comet.x - (comet.vx / mag) * comet.len;
+        const ty = comet.y - (comet.vy / mag) * comet.len;
+        const grad = ctx.createLinearGradient(comet.x, comet.y, tx, ty);
+        if (light) {
+          grad.addColorStop(0, `rgba(79,70,229,${0.65 * fade})`);
+          grad.addColorStop(0.35, `rgba(168,85,247,${0.32 * fade})`);
+          grad.addColorStop(1, 'rgba(168,85,247,0)');
+        } else {
+          grad.addColorStop(0, `rgba(255,255,255,${0.95 * fade})`);
+          grad.addColorStop(0.3, `rgba(139,124,255,${0.55 * fade})`);
+          grad.addColorStop(1, 'rgba(224,84,240,0)');
+        }
+        ctx.lineWidth = 2;
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = grad;
+        ctx.beginPath();
+        ctx.moveTo(comet.x, comet.y);
+        ctx.lineTo(tx, ty);
+        ctx.stroke();
+        const glow = ctx.createRadialGradient(comet.x, comet.y, 0, comet.x, comet.y, 7);
+        glow.addColorStop(0, light ? `rgba(79,70,229,${0.85 * fade})` : `rgba(255,255,255,${0.95 * fade})`);
+        glow.addColorStop(0.45, light ? `rgba(168,85,247,${0.3 * fade})` : `rgba(139,124,255,${0.45 * fade})`);
+        glow.addColorStop(1, 'rgba(139,124,255,0)');
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(comet.x, comet.y, 7, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
